@@ -23,11 +23,9 @@ final class GiphyCollectionViewController : UICollectionViewController {
     override func viewDidLoad() {
         
         // Async operation queue to download data in background
-        let loadGiphy = DispatchQueue(label: "GiphyDataQueue")
-        
-        loadGiphy.sync {
+        DispatchQueue.main.async {
             
-            images = Img.trending() // Set images to trending giphys data
+            self.images = Img.trending() // Set images to trending giphys data
             
             self.loadView() // Reload collection view
         }
@@ -70,7 +68,7 @@ extension GiphyCollectionViewController {
                 
                 cell.imageView.image = UIImage // Set image to view
                 
-                imageCache[indexPath] = UIImage // Add image to cache
+                self.imageCache[indexPath] = UIImage // Add image to cache
             }
             
         }

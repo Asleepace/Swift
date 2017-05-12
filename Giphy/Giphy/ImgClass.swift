@@ -42,11 +42,10 @@ class Img {
     }
     
     // Instance method for asynchroneous loading of image
-    public func loadImage(completion: (UIImage) -> Void) {
+    public func loadImage(completion: @escaping (UIImage) -> Void) {
         
         // Download images in background operation queues
-        let queue = DispatchQueue(label:"ImageQueue")
-        queue.sync {
+        DispatchQueue.main.async {
             do {
                 
                 // Try loading image from url
