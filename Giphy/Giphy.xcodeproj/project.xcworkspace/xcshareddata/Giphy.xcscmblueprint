@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F3C7B858BDCA66D812EEB6655CA4CE994EF9B84B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F3C7B858BDCA66D812EEB6655CA4CE994EF9B84B" : 9223372036854775807,
+    "89A98BDC099DA614CFFC8045F2D6E3B8007ABD2C" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C66A1941-34B4-46FA-8064-330F5EBDD1BD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F3C7B858BDCA66D812EEB6655CA4CE994EF9B84B" : "Giphy\/",
+    "89A98BDC099DA614CFFC8045F2D6E3B8007ABD2C" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Giphy",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Giphy.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Asleepace\/Swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "89A98BDC099DA614CFFC8045F2D6E3B8007ABD2C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Asleepace\/Swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F3C7B858BDCA66D812EEB6655CA4CE994EF9B84B"
+    }
+  ]
+}
