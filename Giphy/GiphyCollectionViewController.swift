@@ -2,8 +2,8 @@
 //  GiphyCollectionViewController.swift
 //  Giphy
 //
-//  Created by Paradox on 5/11/17.
-//  Copyright © 2017 dlabs. All rights reserved.
+//  Created by Colin Teahan on 5/11/17.
+//  Copyright © 2017 Colin Teahan. All rights reserved.
 //
 
 import UIKit
@@ -11,15 +11,29 @@ import UIKit
 final class GiphyCollectionViewController : UICollectionViewController {
     
     // Array to hold our trending Giphy Img objects
-    fileprivate let images:[Img?] = Img.trending()
+    fileprivate var images:[Img?] = [Img?]()
     
     // Dictionary to cache loaded images for each row
     fileprivate var imageCache = [IndexPath:UIImage]()
     
     // Resuse identifier for the GiphyCells
     fileprivate let reuseIdentifier = "GiphyCell"
-
+    
+    // Load giphy image data when view is first loaded
+    override func viewDidLoad() {
+        
+        // Async operation queue to download data in background
+        let loadGiphy = DispatchQueue(label: "GiphyDataQueue")
+        
+        loadGiphy.sync {
+            
+            images = Img.trending() // Set images to trending giphys data
+            
+            self.loadView() // Reload collection view
+        }
+    }
 }
+
 
 
 // Collection view methods
@@ -54,11 +68,9 @@ extension GiphyCollectionViewController {
             
             image.loadImage() { (UIImage) in
                 
-                cell.imageView.image = UIImage
+                cell.imageView.image = UIImage // Set image to view
                 
-                imageCache[indexPath] = UIImage
-                
-                print("Loading image")
+                imageCache[indexPath] = UIImage // Add image to cache
             }
             
         }

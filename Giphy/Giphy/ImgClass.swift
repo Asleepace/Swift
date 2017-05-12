@@ -23,7 +23,7 @@ class Img {
     // Class initializer that takes a dictionary of the Giphy image data
     public init?(data:[String: Any]) {
         
-        // Parse json data into cooresponding image data
+        // Parse json data into cooresponding img data
         guard let images = data["images"] as? [String: Any],
         let original = images["original"] as? [String: Any],
             let height = original["height"] as? String,
@@ -43,13 +43,21 @@ class Img {
     
     // Instance method for asynchroneous loading of image
     public func loadImage(completion: (UIImage) -> Void) {
-        let queue = DispatchQueue(label:"ImageQueue");
+        
+        // Download images in background operation queues
+        let queue = DispatchQueue(label:"ImageQueue")
         queue.sync {
             do {
+                
+                // Try loading image from url
                 if let url = URL(string: self.url) {
+                    
                     let imageData =  try Data(contentsOf: url)
+                    
                     if let myImage = UIImage(data: imageData) {
-                        completion(myImage)
+                        
+                        completion(myImage) // Return image on completion
+
                     }
                 }
             }
@@ -64,19 +72,24 @@ class Img {
     public static func trending() -> [Img?] {
         var output = [Img?]();
         do {
+            // Try converting api string to url (might fail due to key)
             guard let url = URL(string:Img.api) else {
                 print("failed parsing url")
                 return output
             }
+            
+            // Try loading data and parsing to JSON
             let requestData = try Data(contentsOf:url);
             let json = try JSONSerialization.jsonObject(with: requestData) as? [String: Any]
             if let array = json?["data"] as? [[String: Any]] {
+                
+                // Fill trending array with Img objects
                 for item in array {
                     output.append(Img(data: item))
                 }
             }
         } catch {
-            print(error)
+            print("Failed parsing json: \(error)")
         }
         return output
     }
