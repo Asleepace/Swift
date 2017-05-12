@@ -18,7 +18,7 @@ class Img {
     var size:Int?
     
     // Giphy API trending url with key and limit of 10
-    private static let api = "http://api.giphy.com/v1/stickers/trending?api_key=dc6zaTOxFJmzC&limit=10"
+    private static let api = "http://api.giphy.com/v1/stickers/trending?api_key=dc6zaTOxFJmzC"
     
     // Class initializer that takes a dictionary of the Giphy image data
     public init?(data:[String: Any]) {
@@ -51,29 +51,34 @@ class Img {
                 // Try loading image from url
                 if let url = URL(string: self.url) {
                     
+                    // Try convertion url contents into data
                     let imageData =  try Data(contentsOf: url)
                     
+                    // Try creating image from data and return
                     if let myImage = UIImage(data: imageData) {
                         
                         completion(myImage) // Return image on completion
-
                     }
                 }
             }
             catch {
-                print(error)
+                print("error loading image: \(error)")
             }
         }
     }
     
     
     // Public class method for loading trending images
-    public static func trending() -> [Img?] {
+    public static func trending(number:Int) -> [Img?] {
         var output = [Img?]();
         do {
+            
+            // Add number of trending Giphs to return
+            let trendingUrl = Img.api + "&limit=\(number)"
+            
             // Try converting api string to url (might fail due to key)
-            guard let url = URL(string:Img.api) else {
-                print("failed parsing url")
+            guard let url = URL(string:trendingUrl) else {
+                print("failed parsing url: \(trendingUrl)")
                 return output
             }
             
