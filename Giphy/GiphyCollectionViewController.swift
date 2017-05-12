@@ -27,7 +27,7 @@ final class GiphyCollectionViewController : UICollectionViewController {
             
             self.images = Img.trending(number: 10) // Set images to trending giphys data
             
-            self.loadView() // Reload collection view
+            self.collectionView?.reloadData() // Reload collection view
         }
     }
 }
