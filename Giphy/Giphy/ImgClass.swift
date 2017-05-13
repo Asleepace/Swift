@@ -45,7 +45,7 @@ class Img {
     public func loadImage(completion: @escaping (UIImage) -> Void) {
         
         // Download images in background operation queues
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
             do {
                 
                 // Try loading image from url
@@ -57,7 +57,12 @@ class Img {
                     // Try creating image from data and return
                     if let myImage = UIImage(data: imageData) {
                         
-                        completion(myImage) // Return image on completion
+                        // Return image on the main thread for UI updates
+                        DispatchQueue.main.async {
+                        
+                            completion(myImage) // Return image on completion
+                            
+                        }
                     }
                 }
             }

@@ -23,11 +23,16 @@ final class GiphyCollectionViewController : UICollectionViewController {
     override func viewDidLoad() {
         
         // Async operation queue to download data in background
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
             
             self.images = Img.trending(number: 10) // Set images to trending giphys data
             
-            self.collectionView?.reloadData() // Reload collection view
+            // Reload UI from the main thread
+            DispatchQueue.main.async {
+                
+                self.collectionView?.reloadData() // Reload collection view
+
+            }
         }
     }
 }
