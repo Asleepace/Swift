@@ -10,6 +10,7 @@ import UIKit
 
 class GiphyCell: UICollectionViewCell {
     
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
     
 }

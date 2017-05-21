@@ -16,6 +16,13 @@ class Img {
     var height:Int?
     var width:Int?
     var size:Int?
+    var image:UIImage?
+    
+    public func didUpdateURL(newText:String) {
+    
+        self.url = newText
+    
+    }
     
     // Giphy API trending url with key and limit of 10
     private static let api = "http://api.giphy.com/v1/stickers/trending?api_key=dc6zaTOxFJmzC"
@@ -39,13 +46,21 @@ class Img {
         self.width = Int(width);
         self.size = Int(size);
         self.url = url;
+        
     }
     
     // Instance method for asynchroneous loading of image
     public func loadImage(completion: @escaping (UIImage) -> Void) {
         
+        if let myImage = self.image {
+            completion(myImage)
+            return
+        }
+        
+        
         // Download images in background operation queues
         DispatchQueue.global().async {
+            
             do {
                 
                 // Try loading image from url
@@ -56,6 +71,8 @@ class Img {
                     
                     // Try creating image from data and return
                     if let myImage = UIImage(data: imageData) {
+                        
+                        self.image = myImage
                         
                         // Return image on the main thread for UI updates
                         DispatchQueue.main.async {
@@ -71,6 +88,7 @@ class Img {
             }
         }
     }
+    
     
     
     // Public class method for loading trending images
@@ -100,6 +118,7 @@ class Img {
         } catch {
             print("Failed parsing json: \(error)")
         }
+        
         return output
     }
 }

@@ -53,10 +53,15 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </imageView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Mm4-1h-wjQ">
+                                            <rect key="frame" x="75" y="75" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="aQ9-KB-FNv" id="NCs-l0-UgS"/>
+                                    <outlet property="loadingSpinner" destination="Mm4-1h-wjQ" id="gDE-Hs-x5q"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -65,11 +70,68 @@
                             <outlet property="delegate" destination="UVX-Ds-Dux" id="79W-qR-WcZ"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Giphy" id="gij-Ap-pCr"/>
+                    <navigationItem key="navigationItem" title="Giphy" id="gij-Ap-pCr">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="wD0-6Z-M9D">
+                            <connections>
+                                <action selector="reloadData" destination="UVX-Ds-Dux" id="ctl-Xx-I9H"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="zmk-pW-gJ0" kind="show" identifier="selectedImage" id="0Jn-yf-jr0"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mF-D1-tSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-122.40000000000001" y="54.422788605697157"/>
+        </scene>
+        <!--Single Image View Controller-->
+        <scene sceneID="M2A-I0-ixN">
+            <objects>
+                <viewController storyboardIdentifier="SingleImage" id="zmk-pW-gJ0" customClass="SingleImageViewController" customModule="Giphy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xs7-5B-CQH"/>
+                        <viewControllerLayoutGuide type="bottom" id="6MP-QY-Prn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ahc-od-dqv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fMh-af-jHU">
+                                <rect key="frame" x="16" y="72" width="343" height="270"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H2n-q3-sAe">
+                                <rect key="frame" x="16" y="350" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="updateUrlWithSender:" destination="zmk-pW-gJ0" eventType="editingChanged" id="67Q-NN-Yey"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lp-cH-WFk">
+                                <rect key="frame" x="118" y="541" width="138" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" red="1" green="0.29016272129999998" blue="0.15106566369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteImage" destination="zmk-pW-gJ0" eventType="touchDown" id="CjU-qX-FcY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="myImageView" destination="fMh-af-jHU" id="8ud-6u-Yvi"/>
+                        <outlet property="myTextField" destination="H2n-q3-sAe" id="pGF-in-F7q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HCT-7O-iWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="540" y="53.523238380809602"/>
         </scene>
     </scenes>
 </document>

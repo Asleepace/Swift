@@ -14,6 +14,7 @@
 		C372764E1EC4F24200B730AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C372764D1EC4F24200B730AE /* Assets.xcassets */; };
 		C37276511EC4F24200B730AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C372764F1EC4F24200B730AE /* LaunchScreen.storyboard */; };
 		C37276591EC4F29200B730AE /* ImgClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37276581EC4F29200B730AE /* ImgClass.swift */; };
+		C3C635591ECE3CD400E1E23F /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C635581ECE3CD300E1E23F /* SingleImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		C37276501EC4F24200B730AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C37276521EC4F24200B730AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C37276581EC4F29200B730AE /* ImgClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgClass.swift; sourceTree = "<group>"; };
+		C3C635581ECE3CD300E1E23F /* SingleImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				C37276461EC4F24200B730AE /* AppDelegate.swift */,
 				C37276581EC4F29200B730AE /* ImgClass.swift */,
 				C3416CB61EC522DB00DC1233 /* GiphyCollectionViewController.swift */,
+				C3C635581ECE3CD300E1E23F /* SingleImageViewController.swift */,
 				C3416CB81EC5252100DC1233 /* GiphyCell.swift */,
 				C372764A1EC4F24200B730AE /* Main.storyboard */,
 				C372764D1EC4F24200B730AE /* Assets.xcassets */,
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C37276591EC4F29200B730AE /* ImgClass.swift in Sources */,
+				C3C635591ECE3CD400E1E23F /* SingleImageViewController.swift in Sources */,
 				C3416CB71EC522DB00DC1233 /* GiphyCollectionViewController.swift in Sources */,
 				C37276471EC4F24200B730AE /* AppDelegate.swift in Sources */,
 				C3416CB91EC5252100DC1233 /* GiphyCell.swift in Sources */,

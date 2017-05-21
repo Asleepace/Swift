@@ -1,5 +1,6 @@
 
 import UIKit
+import Foundation
 
 
 func decimalToRomanNumeral(decimal:Int) -> String {
@@ -61,4 +62,28 @@ func decimalToRomanNumeral(decimal:Int) -> String {
 }
 
 print("\(decimalToRomanNumeral(decimal: 1954))")
+
+
+func expressionToRomanNumeral(expresion:String) -> String? {
+    
+    let items = expresion.components(separatedBy: " + ")
+    
+    guard let firstNum = Int(items[0]),
+         let secondNum = Int(items[1]) else {
+            return ""
+    }
+    
+    let answer = firstNum + secondNum
+    
+    let firstNumber = decimalToRomanNumeral(decimal: firstNum)
+    let secondNumber = decimalToRomanNumeral(decimal: secondNum)
+    let answerNumber = decimalToRomanNumeral(decimal: answer)
+    
+    return "\(firstNumber) + \(secondNumber) = \(answerNumber)"
+}
+
+
+let output = expressionToRomanNumeral(expresion: "256X + 178")
+print("\(output)")
+
 
